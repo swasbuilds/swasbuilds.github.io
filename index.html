@@ -1,200 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Swastik Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Swastik | Web Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #0F172A;
-      color: white;
-    }
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0F172A;
+  color:white;
+}
 
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(2,6,23,0.9);
-      padding: 15px;
-      display: flex;
-      justify-content: space-around;
-      z-index: 1000;
-    }
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.7);
+  padding:15px;
+  display:flex;
+  justify-content:space-around;
+  z-index:1000;
+}
 
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.navbar a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    .navbar a:hover {
-      color: #22C55E;
-    }
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#4F46E5,#22C55E);
+  text-align:center;
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #4F46E5, #22C55E);
-      text-align: center;
-      padding: 20px;
-    }
+.hero h1{font-size:3rem;}
 
-    .hero h1 {
-      font-size: 3rem;
-    }
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:white;
+  color:#4F46E5;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  transition:.3s;
+}
 
-    .typing {
-      margin-top: 10px;
-      font-size: 1.3rem;
-      border-right: 3px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
-    }
+.btn:hover{
+  box-shadow:0 0 20px #fff,0 0 40px #22C55E;
+}
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 300px }
-    }
+/* SECTIONS */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
 
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
+.dark{background:#020617;}
 
-    .btn {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: white;
-      color: #4F46E5;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+/* CARDS */
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  margin-top:20px;
+}
 
-    /* SECTION */
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
+.card{
+  background:#1E293B;
+  padding:20px;
+  border-radius:15px;
+  width:220px;
+  transition:.3s;
+}
 
-    .dark {
-      background: #020617;
-    }
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 20px #22C55E;
+}
 
-    /* PROJECTS */
-    .projects {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-    }
+/* FORM */
+input, textarea{
+  width:80%;
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+  border:none;
+}
 
-    .card {
-      background: #1E293B;
-      padding: 20px;
-      border-radius: 15px;
-      width: 220px;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:#22C55E;
+  color:white;
+  cursor:pointer;
+}
 
-    .card:hover {
-      transform: translateY(-10px) scale(1.05);
-    }
-
-    /* FOOTER */
-    .footer {
-      background: black;
-      padding: 20px;
-    }
-
-    a {
-      color: #22C55E;
-    }
-
-  </style>
+/* FOOTER */
+.footer{
+  background:black;
+  padding:20px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
 
-  <!-- HERO -->
-  <div class="hero" id="home">
-    <h1>Swastik 🚀</h1>
-    <div class="typing">Frontend Developer | Web Builder</div>
-    <button class="btn" onclick="document.location='#contact'">Contact Me</button>
-  </div>
+<!-- HERO -->
+<div class="hero" id="home">
+<h1>Swastik 🚀</h1>
+<p>Frontend Developer | I build modern websites</p>
+<a href="#contact"><button class="btn">Hire Me</button></a>
+<a href="#"><button class="btn">Download Resume</button></a>
+</div>
 
-  <!-- ABOUT -->
-  <div class="section" id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I'm Swastik 👋  
-      I love building modern, clean, and interactive websites.  
-      Currently learning JavaScript and improving my frontend skills.
-    </p>
-  </div>
+<!-- SERVICES -->
+<div class="section" id="services">
+<h2>My Services 💼</h2>
+<div class="container">
+<div class="card"><h3>Website Design</h3><p>Modern UI/UX design</p></div>
+<div class="card"><h3>Frontend Dev</h3><p>HTML, CSS, JS websites</p></div>
+<div class="card"><h3>Portfolio Sites</h3><p>Personal & business sites</p></div>
+</div>
+</div>
 
-  <!-- PROJECTS -->
-  <div class="section dark" id="projects">
-    <h2>My Projects</h2>
+<!-- PROJECTS -->
+<div class="section dark" id="projects">
+<h2>My Projects 🚀</h2>
+<div class="container">
+<div class="card"><h3>Calculator</h3></div>
+<div class="card"><h3>To-Do App</h3></div>
+<div class="card"><h3>Portfolio</h3></div>
+</div>
+</div>
 
-    <div class="projects">
-      <div class="card">
-        <h3>Calculator App</h3>
-        <p>Made using HTML & CSS</p>
-      </div>
+<!-- CONTACT -->
+<div class="section" id="contact">
+<h2>Contact Me 📩</h2>
 
-      <div class="card">
-        <h3>To-Do App</h3>
-        <p>JavaScript task manager</p>
-      </div>
+<form action="mailto:swastik27.2011@email.com" method="post" enctype="text/plain">
+<input type="text" placeholder="Your Name" required><br>
+<input type="email" placeholder="Your Email" required><br>
+<textarea placeholder="Your Message" required></textarea><br>
+<button type="submit">Send Message</button>
+</form>
 
-      <div class="card">
-        <h3>Portfolio</h3>
-        <p>This website 😎</p>
-      </div>
-    </div>
-  </div>
+<p>GitHub: <a href="#">Add your link</a></p>
+</div>
 
-  <!-- CONTACT -->
-  <div class="section" id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: your@email.com</p>
-    <p>GitHub: <a href="#">Add your link</a></p>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>© 2026 Swastik | Built with ❤️</p>
-  </div>
+<!-- FOOTER -->
+<div class="footer">
+<p>© 2026 Swastik | Freelancer 💻</p>
+</div>
 
 </body>
 </html>
