@@ -39,12 +39,18 @@ body{
   gap:30px;
   background:rgba(0,0,0,0.3);
   backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
 .navbar a{
   color:white;
   text-decoration:none;
   font-weight:500;
+  transition:.3s;
+}
+
+.navbar a:hover{
+  color:#22C55E;
 }
 
 /* HERO */
@@ -55,10 +61,19 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:20px;
 }
 
 .hero h1{
-  font-size:3rem;
+  font-size:3.2rem;
+  background: linear-gradient(90deg,#22C55E,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.tagline{
+  margin-top:10px;
+  color:#cbd5f5;
 }
 
 #typing{
@@ -69,19 +84,20 @@ body{
 
 /* BUTTON */
 .btn{
-  margin-top:20px;
-  padding:12px 25px;
+  margin-top:25px;
+  padding:12px 28px;
   border:none;
   border-radius:30px;
   background:white;
   color:#4F46E5;
   cursor:pointer;
+  font-weight:bold;
   transition:.3s;
 }
 
 .btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #fff;
+  transform:scale(1.08);
+  box-shadow:0 0 25px #22C55E;
 }
 
 /* SECTIONS */
@@ -98,33 +114,51 @@ body{
   transform:translateY(0);
 }
 
-/* GLASS CARDS */
+/* CARDS */
 .container{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:20px;
+  gap:25px;
   margin-top:30px;
 }
 
 .card{
   padding:20px;
-  width:220px;
+  width:250px;
   border-radius:20px;
   background:rgba(255,255,255,0.1);
   backdrop-filter:blur(15px);
   transition:.3s;
 }
 
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:0.9rem;
+  color:#e2e8f0;
+}
+
+.card a{
+  display:inline-block;
+  margin-top:10px;
+  color:#22C55E;
+  text-decoration:none;
+  font-size:0.9rem;
+}
+
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 20px rgba(255,255,255,0.3);
+  box-shadow:0 0 25px rgba(34,197,94,0.6);
 }
 
 /* FOOTER */
 .footer{
   text-align:center;
-  padding:20px;
+  padding:30px;
+  color:#cbd5f5;
 }
 </style>
 </head>
@@ -142,18 +176,36 @@ body{
 <!-- HERO -->
 <div class="hero" id="home">
 <h1>Swastik 🚀</h1>
+
+<p class="tagline">Building clean UI & real-world web projects</p>
+
 <div id="typing"></div>
 
-<a href="#contact"><button class="btn">Hire Me</button></a>
+<a href="mailto:swastik27.2011@gmail.com">
+<button class="btn">Hire Me</button>
+</a>
 </div>
 
 <!-- SERVICES -->
 <div class="section" id="services">
 <h2>My Services</h2>
 <div class="container">
-<div class="card">Website Design</div>
-<div class="card">Frontend Development</div>
-<div class="card">Portfolio Websites</div>
+
+<div class="card">
+<h3>Website Design</h3>
+<p>Modern, responsive UI designs for web applications.</p>
+</div>
+
+<div class="card">
+<h3>Frontend Development</h3>
+<p>Interactive and fast websites using HTML, CSS & JS.</p>
+</div>
+
+<div class="card">
+<h3>Portfolio Websites</h3>
+<p>Custom personal portfolios to showcase your work.</p>
+</div>
+
 </div>
 </div>
 
@@ -161,21 +213,38 @@ body{
 <div class="section" id="projects">
 <h2>Projects</h2>
 <div class="container">
-<div class="card">Calculator App</div>
-<div class="card">To-Do App</div>
-<div class="card">Portfolio</div>
+
+<div class="card">
+<h3>Calculator App</h3>
+<p>Real-time calculator using JavaScript.</p>
+<a href="#">View Project</a>
+</div>
+
+<div class="card">
+<h3>To-Do App</h3>
+<p>Task manager with add/delete functionality.</p>
+<a href="#">View Project</a>
+</div>
+
+<div class="card">
+<h3>Portfolio Website</h3>
+<p>This personal portfolio built with modern UI.</p>
+<a href="#">View Project</a>
+</div>
+
 </div>
 </div>
 
 <!-- CONTACT -->
 <div class="section" id="contact">
 <h2>Contact</h2>
-<p>swastik27.2011@gmail.com</p>
+<p>Email: swastik27.2011@gmail.com</p>
+<p>GitHub: github.com/swasbuilds</p>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<p>© 2026 Swastik</p>
+<p>© 2026 Swastik | Built with ❤️</p>
 </div>
 
 <script>
@@ -190,7 +259,12 @@ sec.classList.add("show");
 });
 
 /* TYPING EFFECT */
-const texts=["Frontend Developer 💻","Web Designer 🎨","Freelancer 💼"];
+const texts=[
+"Building fast & modern web experiences 🚀",
+"Aspiring Full Stack Developer 💻",
+"I turn ideas into real-world projects ⚡"
+];
+
 let i=0,j=0,current="",isDeleting=false;
 
 function type(){
