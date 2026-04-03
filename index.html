@@ -21,6 +21,7 @@ body{
   background-size:400% 400%;
   animation: bg 12s ease infinite;
   color:white;
+  perspective: 1000px;
 }
 
 @keyframes bg{
@@ -40,6 +41,7 @@ body{
   background:rgba(0,0,0,0.3);
   backdrop-filter:blur(10px);
   z-index:1000;
+  transition:0.3s;
 }
 
 .navbar a{
@@ -49,7 +51,7 @@ body{
   transition:.3s;
 }
 
-.navbar a:hover{
+.navbar a:hover, .navbar a.active{
   color:#22C55E;
 }
 
@@ -62,30 +64,35 @@ body{
   align-items:center;
   text-align:center;
   padding:20px;
+  transform-style: preserve-3d;
 }
 
 .hero h1{
-  font-size:3.2rem;
+  font-size:3.5rem;
   background: linear-gradient(90deg,#22C55E,#38bdf8);
   -webkit-background-clip:text;
   color:transparent;
+  transform: translateZ(30px);
 }
 
 .tagline{
   margin-top:10px;
   color:#cbd5f5;
+  font-size:1.2rem;
 }
 
 #typing{
   margin-top:10px;
   font-size:1.3rem;
   color:#22C55E;
+  font-weight:500;
+  min-height:30px;
 }
 
 /* BUTTON */
 .btn{
   margin-top:25px;
-  padding:12px 28px;
+  padding:14px 32px;
   border:none;
   border-radius:30px;
   background:white;
@@ -93,11 +100,30 @@ body{
   cursor:pointer;
   font-weight:bold;
   transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:300%;
+  height:300%;
+  background:rgba(34,197,94,0.2);
+  transform:translate(-50%,-50%) scale(0);
+  transition:0.5s;
+  border-radius:50%;
+}
+
+.btn:hover::before{
+  transform:translate(-50%,-50%) scale(1);
 }
 
 .btn:hover{
   transform:scale(1.08);
-  box-shadow:0 0 25px #22C55E;
+  box-shadow:0 0 30px #22C55E;
 }
 
 /* SECTIONS */
@@ -105,8 +131,8 @@ body{
   padding:100px 20px;
   text-align:center;
   opacity:0;
-  transform:translateY(50px);
-  transition:0.8s;
+  transform:translateY(80px);
+  transition:all 1s ease;
 }
 
 .section.show{
@@ -128,8 +154,9 @@ body{
   width:250px;
   border-radius:20px;
   background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(15px);
-  transition:.3s;
+  backdrop-filter:blur(20px);
+  transition:all 0.5s ease;
+  cursor:pointer;
 }
 
 .card h3{
@@ -150,8 +177,8 @@ body{
 }
 
 .card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 25px rgba(34,197,94,0.6);
+  transform:translateY(-15px) rotateX(5deg);
+  box-shadow:0 0 30px rgba(34,197,94,0.7);
 }
 
 /* FOOTER */
@@ -159,26 +186,23 @@ body{
   text-align:center;
   padding:30px;
   color:#cbd5f5;
+  font-size:0.9rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
-<a href="#home">Home</a>
+<a href="#home" class="active">Home</a>
 <a href="#services">Services</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
 
-<!-- HERO -->
 <div class="hero" id="home">
 <h1>Swastik 🚀</h1>
-
 <p class="tagline">Building clean UI & real-world web projects</p>
-
 <div id="typing"></div>
 
 <a href="mailto:swastik27.2011@gmail.com">
@@ -186,111 +210,117 @@ body{
 </a>
 </div>
 
-<!-- SERVICES -->
 <div class="section" id="services">
 <h2>My Services</h2>
 <div class="container">
-
 <div class="card">
 <h3>Website Design</h3>
 <p>Modern, responsive UI designs for web applications.</p>
 </div>
-
 <div class="card">
 <h3>Frontend Development</h3>
 <p>Interactive and fast websites using HTML, CSS & JS.</p>
 </div>
-
 <div class="card">
 <h3>Portfolio Websites</h3>
 <p>Custom personal portfolios to showcase your work.</p>
 </div>
-
 </div>
 </div>
 
-<!-- PROJECTS -->
 <div class="section" id="projects">
 <h2>Projects</h2>
 <div class="container">
-
 <div class="card">
-<h3>Calculator App</h3>
-<p>Real-time calculator using JavaScript.</p>
-<a href="#">View Project</a>
+<h3>AI Study Assistant 🤖</h3>
+<p>An interactive study tool that simulates AI behavior by answering questions and saving history.</p>
+<a href="https://swasbuilds.github.io/ai-study-assistant/" target="_blank">Live Demo 🚀</a>
 </div>
-
 <div class="card">
 <h3>To-Do App</h3>
 <p>Task manager with add/delete functionality.</p>
 <a href="#">View Project</a>
 </div>
-
 <div class="card">
 <h3>Portfolio Website</h3>
 <p>This personal portfolio built with modern UI.</p>
 <a href="#">View Project</a>
 </div>
-
 </div>
 </div>
 
-<!-- CONTACT -->
 <div class="section" id="contact">
 <h2>Contact</h2>
 <p>Email: swastik27.2011@gmail.com</p>
 <p>GitHub: github.com/swasbuilds</p>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 <p>© 2026 Swastik | Built with ❤️</p>
 </div>
 
 <script>
-/* SCROLL ANIMATION */
+// SCROLL REVEAL
 const sections=document.querySelectorAll(".section");
 window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
-sec.classList.add("show");
-}
-});
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<window.innerHeight-80){
+      sec.classList.add("show");
+    }
+  });
 });
 
-/* TYPING EFFECT */
+// NAVBAR ACTIVE LINK
+const links=document.querySelectorAll(".navbar a");
+window.addEventListener("scroll",()=>{
+  let fromTop=window.scrollY+100;
+  links.forEach(link=>{
+    let section=document.querySelector(link.getAttribute("href"));
+    if(section.offsetTop<=fromTop && section.offsetTop+section.offsetHeight>fromTop){
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+});
+
+// TYPING EFFECT
 const texts=[
 "Building fast & modern web experiences 🚀",
 "Aspiring Full Stack Developer 💻",
 "I turn ideas into real-world projects ⚡"
 ];
-
 let i=0,j=0,current="",isDeleting=false;
-
 function type(){
-current=texts[i];
-
-if(isDeleting){
-document.getElementById("typing").innerHTML=current.substring(0,j--);
-}else{
-document.getElementById("typing").innerHTML=current.substring(0,j++);
+  current=texts[i];
+  document.getElementById("typing").innerHTML=current.substring(0,j);
+  if(!isDeleting){
+    j++;
+    if(j===current.length){
+      isDeleting=true;
+      setTimeout(type,1200);
+      return;
+    }
+  } else{
+    j--;
+    if(j===0){
+      isDeleting=false;
+      i=(i+1)%texts.length;
+    }
+  }
+  setTimeout(type,isDeleting?40:80);
 }
-
-if(!isDeleting && j===current.length){
-isDeleting=true;
-setTimeout(type,1000);
-}
-else if(isDeleting && j===0){
-isDeleting=false;
-i=(i+1)%texts.length;
-setTimeout(type,300);
-}
-else{
-setTimeout(type,isDeleting?50:100);
-}
-}
-
 type();
+
+// MAGNETIC BUTTON EFFECT
+const btn=document.querySelector(".btn");
+btn.addEventListener("mousemove",(e)=>{
+  const rect=btn.getBoundingClientRect();
+  const x=e.clientX-rect.left-rect.width/2;
+  const y=e.clientY-rect.top-rect.height/2;
+  btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
+});
+btn.addEventListener("mouseleave",()=>{btn.style.transform="translate(0,0)";});
 </script>
 
 </body>
