@@ -27,11 +27,21 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #020617;
+      background: rgba(2,6,23,0.9);
       padding: 15px;
-      text-align: center;
-      font-weight: bold;
+      display: flex;
+      justify-content: space-around;
       z-index: 1000;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      color: #22C55E;
     }
 
     /* HERO */
@@ -50,9 +60,23 @@
       font-size: 3rem;
     }
 
-    .hero p {
+    .typing {
       margin-top: 10px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      border-right: 3px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 300px }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     .btn {
@@ -64,18 +88,16 @@
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #ddd;
-    }
-
-    /* SECTIONS */
+    /* SECTION */
     .section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
-      animation: fadeIn 1s ease-in;
+    }
+
+    .dark {
+      background: #020617;
     }
 
     /* PROJECTS */
@@ -100,33 +122,14 @@
       transform: translateY(-10px) scale(1.05);
     }
 
-    /* DARK SECTIONS */
-    .dark {
-      background: #020617;
-    }
-
     /* FOOTER */
     .footer {
       background: black;
       padding: 20px;
-      text-align: center;
     }
 
     a {
       color: #22C55E;
-      text-decoration: none;
-    }
-
-    /* ANIMATION */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
   </style>
@@ -136,56 +139,53 @@
 
   <!-- NAVBAR -->
   <div class="navbar">
-    Swastik 🚀
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <!-- HERO -->
-  <div class="hero">
-    <h1>Swastik</h1>
-    <p>Frontend Developer | Building modern websites</p>
-    <button class="btn">Contact Me</button>
+  <div class="hero" id="home">
+    <h1>Swastik 🚀</h1>
+    <div class="typing">Frontend Developer | Web Builder</div>
+    <button class="btn" onclick="document.location='#contact'">Contact Me</button>
   </div>
 
   <!-- ABOUT -->
-  <div class="section">
+  <div class="section" id="about">
     <h2>About Me</h2>
     <p>
       Hi, I'm Swastik 👋  
-      I am a passionate frontend developer who loves building clean and modern websites.
-      Currently learning HTML, CSS, and JavaScript.
+      I love building modern, clean, and interactive websites.  
+      Currently learning JavaScript and improving my frontend skills.
     </p>
   </div>
 
-  <!-- SKILLS -->
-  <div class="section dark">
-    <h2>My Skills</h2>
-    <p>HTML | CSS | JavaScript | GitHub</p>
-  </div>
-
   <!-- PROJECTS -->
-  <div class="section">
+  <div class="section dark" id="projects">
     <h2>My Projects</h2>
 
     <div class="projects">
       <div class="card">
         <h3>Calculator App</h3>
-        <p>Basic calculator using HTML & CSS</p>
+        <p>Made using HTML & CSS</p>
       </div>
 
       <div class="card">
         <h3>To-Do App</h3>
-        <p>Task manager with JavaScript</p>
+        <p>JavaScript task manager</p>
       </div>
 
       <div class="card">
-        <h3>Portfolio Website</h3>
-        <p>This modern portfolio design</p>
+        <h3>Portfolio</h3>
+        <p>This website 😎</p>
       </div>
     </div>
   </div>
 
   <!-- CONTACT -->
-  <div class="section dark">
+  <div class="section" id="contact">
     <h2>Contact Me</h2>
     <p>Email: your@email.com</p>
     <p>GitHub: <a href="#">Add your link</a></p>
