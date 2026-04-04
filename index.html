@@ -157,6 +157,7 @@ body{
   backdrop-filter:blur(20px);
   transition:all 0.5s ease;
   cursor:pointer;
+  position:relative;
 }
 
 .card h3{
@@ -179,6 +180,26 @@ body{
 .card:hover{
   transform:translateY(-15px) rotateX(5deg);
   box-shadow:0 0 30px rgba(34,197,94,0.7);
+}
+
+/* Weather preview icon */
+.weather-icon{
+  font-size:3rem;
+  position:absolute;
+  top:15px;
+  right:15px;
+  opacity:0;
+  transition:all 0.5s ease;
+}
+
+.card.weather:hover .weather-icon{
+  opacity:1;
+  animation: float 1.5s infinite alternate;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-10px);}
 }
 
 /* FOOTER */
@@ -240,21 +261,14 @@ body{
 </div>
 
 <!-- Project 2 - Weather App -->
-<div class="card">
+<div class="card weather">
 <h3>Weather Wizard 🌦️</h3>
 <p>Interactive weather app showing real-time weather for any city in India with dynamic visuals and live updates. Built using HTML, CSS & JavaScript with OpenWeatherMap API.</p>
 <a href="https://swasbuilds.github.io/swas_india_weather_app/" target="_blank">Live Demo 🚀</a>
-<a href="https://github.com/swasbuilds/swas_india_weather_app" target="_blank">Source Code 💻</a>
+<div class="weather-icon">☀️</div>
 </div>
 
-<!-- Project 3 -->
-<div class="card">
-<h3>To-Do App</h3>
-<p>Task manager with add/delete functionality.</p>
-<a href="#">View Project</a>
-</div>
-
-<!-- Project 4 -->
+<!-- Project 3 - Portfolio Website -->
 <div class="card">
 <h3>Portfolio Website</h3>
 <p>This personal portfolio built with modern UI.</p>
@@ -267,7 +281,6 @@ body{
 <div class="section" id="contact">
 <h2>Contact</h2>
 <p>Email: swastik27.2011@gmail.com</p>
-<p>GitHub: github.com/swasbuilds</p>
 </div>
 
 <div class="footer">
@@ -336,6 +349,17 @@ btn.addEventListener("mousemove",(e)=>{
   btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
 });
 btn.addEventListener("mouseleave",()=>{btn.style.transform="translate(0,0)";});
+
+// Weather icon change demo
+const weatherCard=document.querySelector('.card.weather');
+const iconDiv=weatherCard.querySelector('.weather-icon');
+
+// Random icon on hover (demo)
+weatherCard.addEventListener('mouseenter',()=>{
+  const icons=['☀️','🌤️','⛅','🌧️','⛈️','❄️'];
+  const rand=icons[Math.floor(Math.random()*icons.length)];
+  iconDiv.textContent=rand;
+});
 </script>
 
 </body>
